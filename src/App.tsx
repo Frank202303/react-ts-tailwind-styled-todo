@@ -4,6 +4,7 @@ import "./App.css";
 import { StyledButton } from "./components/StyledButton";
 import { AppContainer, GlobalStyle, TitleSpan } from "./style";
 import InputField from "./components/InputField";
+import { Todo } from "./models/Todo";
 
 function App() {
   useEffect(() => {
@@ -14,12 +15,25 @@ function App() {
     document.head.appendChild(link);
   }, []);
   const [todo, setTodo] = useState<string>("");
-  console.log(todo);
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const handleAdd = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (todo) {
+      setTodos([...todos, { id: Date.now(), todo: todo, isDone: false }]);
+      setTodo("");
+      console.log(todos);
+    }
+  };
+
   return (
     <AppContainer>
       <GlobalStyle />
       <TitleSpan>Taskify</TitleSpan>
-      <InputField todo={todo} setTodo={setTodo}></InputField>
+      <InputField
+        todo={todo}
+        setTodo={setTodo}
+        handleAdd={handleAdd}
+      ></InputField>
       <StyledButton>My self defined button</StyledButton>
     </AppContainer>
   );
