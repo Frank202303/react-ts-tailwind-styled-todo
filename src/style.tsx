@@ -37,6 +37,7 @@ export const InputWrapper = styled.form.attrs({})`
 `;
 // input has clasee:.input__box  and  .input__box:focus
 // transform to styledComponent: use '&:'
+//  when max-width<  700px, set:width is 95%
 export const Input = styled.input`
   width: 100%;
   border-radius: 50px;
@@ -49,6 +50,9 @@ export const Input = styled.input`
   &:focus {
     box-shadow: 0 0 10px 1000px rgba(0, 0, 0, 0.5);
     outline: none;
+  }
+  @media (max-width: 700px) {
+    width: 95%;
   }
 `;
 export const Button = styled.button`
@@ -81,4 +85,47 @@ export const TodoListWrapper = styled.div`
   justify-content: space-evenly;
   width: 90%;
   flex-wrap: wrap;
+
+  @media (max-width: 700px) {
+    width: 95%;
+    margin-bottom: 10px;
+  }
+`;
+// when max-width < 1200px, set single Todo :width is 40%
+// when max-width < 700px, set single Todo :width is 100%
+export const SingleTodoForm = styled.form`
+  display: flex;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 15px;
+  background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");
+  transition: 0.2s;
+  &:hover {
+    box-shadow: 0 0 5px black;
+    transform: scale(1.03);
+  }
+  @media (max-width: 1200px) {
+    width: 40%;
+  }
+  @media (max-width: 700px) {
+    width: 100%;
+  }
+`;
+
+export const SingleTodoSpan = styled.span`
+  flex: 1;
+  padding: 5px;
+  border: none;
+  font-size: 20px;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const IconsWrapper = styled.div``;
+export const SingleIconWrapper = styled.span`
+  margin-left: 10px;
+  font-size: 25px;
+  cursor: pointer;
 `;
