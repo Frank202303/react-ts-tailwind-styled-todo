@@ -14,7 +14,7 @@ function App() {
     document.head.appendChild(link);
   }, []);
   const [todo, setTodo] = useState<string>("");
-
+  console.log(todo);
   return (
     <AppContainer>
       <GlobalStyle />
