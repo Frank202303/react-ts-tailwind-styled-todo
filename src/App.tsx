@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./App.css";
 import { StyledButton } from "./components/StyledButton";
@@ -13,11 +13,13 @@ function App() {
     link.rel = "stylesheet";
     document.head.appendChild(link);
   }, []);
+  const [todo, setTodo] = useState<string>("");
+
   return (
     <AppContainer>
       <GlobalStyle />
       <TitleSpan>Taskify</TitleSpan>
-      <InputField></InputField>
+      <InputField todo={todo} setTodo={setTodo}></InputField>
       <StyledButton>My self defined button</StyledButton>
     </AppContainer>
   );

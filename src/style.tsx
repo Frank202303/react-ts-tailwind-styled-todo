@@ -66,7 +66,11 @@ export const Button = styled.button`
   // box-shadow: 0 0 10px black;
   ${tw`absolute w-12 h-12 m-3 rounded-full right-0 border-none text-base bg-blue-600 text-white transition-all duration-200 shadow-md`}
   /*  hover style */
-    &: {
+    &:hover {
     ${tw`bg-blue-700 shadow-lg`}
+    &:active {
+      transform: scale(0.8);
+      box-shadow: 0 0 5px black;
+    }
   }
 `;
