@@ -32,6 +32,11 @@ const SingleTodo = ({ todo, todos, id, setTodos }: Props) => {
       })
     );
   };
+  const handleDelete = (id: number) => {
+    // do not forget to call setTodos
+    // Filter
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
   return (
     <SingleTodoForm>
       <SingleTodoSpan className={todo.isDone ? "isDone" : "notDone"}>
@@ -41,7 +46,7 @@ const SingleTodo = ({ todo, todos, id, setTodos }: Props) => {
         <SingleIconWrapper>
           <AiFillEdit />
         </SingleIconWrapper>
-        <SingleIconWrapper>
+        <SingleIconWrapper onClick={() => handleDelete(todo.id)}>
           <MdDelete />
         </SingleIconWrapper>
         <SingleIconWrapper onClick={() => handleDone(todo.id)}>

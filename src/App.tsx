@@ -36,7 +36,7 @@ function App() {
         handleAdd={handleAdd}
       ></InputField>
       <TodoList todos={todos} setTodos={setTodos}></TodoList>
-      <StyledButton>My self defined button</StyledButton>
+      {/* <StyledButton>My self defined button</StyledButton> */}
     </AppContainer>
   );
 }
