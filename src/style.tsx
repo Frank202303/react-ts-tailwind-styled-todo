@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
-
+import tw from "twin.macro";
 export const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Neucha', cursive;
@@ -52,16 +52,21 @@ export const Input = styled.input`
   }
 `;
 export const Button = styled.button`
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  margin: 12px;
-  border-radius: 50px;
-  right: 0px;
-  border: none;
-  font-size: 15px;
-  background-color: #2f74c0;
-  color: white;
-  transition: 0.2s all;
-  box-shadow: 0 0 10px black;
+  // position: absolute;
+  // width: 50px;
+  // height: 50px;
+  // margin: 12px;
+  // border-radius: 50px;
+  // right: 0px;
+  // border: none;
+  // font-size: 15px;
+  // background-color: #2f74c0;
+  // color: white;
+  // transition: 0.2s all;
+  // box-shadow: 0 0 10px black;
+  ${tw`absolute w-12 h-12 m-3 rounded-full right-0 border-none text-base bg-blue-600 text-white transition-all duration-200 shadow-md`}
+  /*  hover style */
+    &: {
+    ${tw`bg-blue-700 shadow-lg`}
+  }
 `;
