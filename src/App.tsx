@@ -5,6 +5,7 @@ import { StyledButton } from "./components/StyledButton";
 import { AppContainer, GlobalStyle, TitleSpan } from "./style";
 import InputField from "./components/InputField";
 import { Todo } from "./models/Todo";
+import TodoList from "./components/TodoList";
 
 function App() {
   useEffect(() => {
@@ -34,6 +35,7 @@ function App() {
         setTodo={setTodo}
         handleAdd={handleAdd}
       ></InputField>
+      <TodoList todos={todos} setTodos={setTodos}></TodoList>
       <StyledButton>My self defined button</StyledButton>
     </AppContainer>
   );
