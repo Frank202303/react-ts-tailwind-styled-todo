@@ -74,3 +74,11 @@ export const Button = styled.button`
     }
   }
 `;
+
+// class:.todos
+export const TodoListWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+  flex-wrap: wrap;
+`;

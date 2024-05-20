@@ -1,5 +1,6 @@
 import React from "react";
 import { Todo } from "../models/Todo";
+import { TodoListWrapper } from "../style";
 interface Props {
   todos: Todo[];
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
@@ -7,11 +8,11 @@ interface Props {
 
 const TodoList: React.FC<Props> = ({ todos, setTodos }) => {
   return (
-    <div>
+    <TodoListWrapper>
       {todos.map((todo) => (
-        <div>{todo.todo}</div>
+        <div key={todo.id}>{todo.todo}</div>
       ))}
-    </div>
+    </TodoListWrapper>
   );
 };
 
