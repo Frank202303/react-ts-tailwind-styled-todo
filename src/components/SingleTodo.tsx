@@ -17,9 +17,26 @@ interface Props {
 }
 
 const SingleTodo = ({ todo, todos, id, setTodos }: Props) => {
+  const handleDone = (id: number) => {
+    // do not forget to call setTodos
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          //   console.log(todo.id);
+          //   console.log(id);
+          //   console.log(todo);
+          return { ...todo, isDone: !todo.isDone };
+        } else {
+          return todo;
+        }
+      })
+    );
+  };
   return (
     <SingleTodoForm>
-      <SingleTodoSpan>qqq</SingleTodoSpan>
+      <SingleTodoSpan className={todo.isDone ? "isDone" : "notDone"}>
+        {todo.todo}
+      </SingleTodoSpan>
       <IconsWrapper>
         <SingleIconWrapper>
           <AiFillEdit />
@@ -27,7 +44,7 @@ const SingleTodo = ({ todo, todos, id, setTodos }: Props) => {
         <SingleIconWrapper>
           <MdDelete />
         </SingleIconWrapper>
-        <SingleIconWrapper>
+        <SingleIconWrapper onClick={() => handleDone(todo.id)}>
           <MdDownloadDone />
         </SingleIconWrapper>
       </IconsWrapper>

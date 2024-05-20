@@ -22,7 +22,7 @@ function App() {
     if (todo) {
       setTodos([...todos, { id: Date.now(), todo: todo, isDone: false }]);
       setTodo("");
-      console.log(todos);
+      //console.log(todos);
     }
   };
 

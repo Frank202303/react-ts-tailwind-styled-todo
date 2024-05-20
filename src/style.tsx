@@ -117,6 +117,9 @@ export const SingleTodoSpan = styled.span`
   padding: 5px;
   border: none;
   font-size: 20px;
+  &.isDone {
+    text-decoration: line-through;
+  }
 
   &:focus {
     outline: none;
