@@ -132,3 +132,13 @@ export const SingleIconWrapper = styled.span`
   font-size: 25px;
   cursor: pointer;
 `;
+
+export const SingleTodoEditInput = styled.input`
+  flex: 1;
+  padding: 5px;
+  border: none;
+  font-size: 20px;
+  &:focus {
+    outline: none;
+  }
+`;

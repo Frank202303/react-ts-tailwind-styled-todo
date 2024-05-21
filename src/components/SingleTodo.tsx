@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Todo } from "../models/Todo";
 import {
   IconsWrapper,
   SingleIconWrapper,
+  SingleTodoEditInput,
   SingleTodoForm,
   SingleTodoSpan,
 } from "../style";
@@ -17,6 +18,8 @@ interface Props {
 }
 
 const SingleTodo = ({ todo, todos, id, setTodos }: Props) => {
+  const [edit, setEdit] = useState<boolean>(false);
+  const [editTodo, setEditTodo] = useState<string>(todo.todo);
   const handleDone = (id: number) => {
     // do not forget to call setTodos
     setTodos(
@@ -37,13 +40,46 @@ const SingleTodo = ({ todo, todos, id, setTodos }: Props) => {
     // Filter
     setTodos(todos.filter((todo) => todo.id !== id));
   };
+  const handleEditSubmit = (e: React.FormEvent, id: number) => {
+    e.preventDefault();
+    setEdit(false);
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, todo: editTodo };
+        } else {
+          return todo;
+        }
+      })
+    );
+  };
+  const inputRef = useRef<HTMLInputElement>(null);
+  // when [edit] changed, triger: inputRef.current?.focus();
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [edit]);
   return (
-    <SingleTodoForm>
-      <SingleTodoSpan className={todo.isDone ? "isDone" : "notDone"}>
-        {todo.todo}
-      </SingleTodoSpan>
+    <SingleTodoForm onSubmit={(e) => handleEditSubmit(e, todo.id)}>
+      {edit ? (
+        <SingleTodoEditInput
+          ref={inputRef}
+          value={editTodo}
+          onChange={(e) => setEditTodo(e.target.value)}
+        ></SingleTodoEditInput>
+      ) : (
+        <SingleTodoSpan className={todo.isDone ? "isDone" : "notDone"}>
+          {todo.todo}
+        </SingleTodoSpan>
+      )}
+
       <IconsWrapper>
-        <SingleIconWrapper>
+        <SingleIconWrapper
+          onClick={() => {
+            if (!edit && !todo.isDone) {
+              setEdit(!edit);
+            }
+          }}
+        >
           <AiFillEdit />
         </SingleIconWrapper>
         <SingleIconWrapper onClick={() => handleDelete(todo.id)}>
